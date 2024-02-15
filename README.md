@@ -2,6 +2,7 @@
 Bivariate local Moran's I for spatial flow data
 
 Tao, R., & Thill, J. C. (2020). BiFlowLISA: Measuring spatial association for bivariate flow data. Computers, Environment and Urban Systems, 83, 101519.
+
 Before running the code, there are several steps you need to prepare. 
 
 First, import the origin and destination shapefile.
