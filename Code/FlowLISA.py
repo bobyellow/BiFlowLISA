@@ -33,7 +33,7 @@ def execFLOWLISA(AREAS1, AREAS2, FlowValue, Spatstat, NeiLvl):
     start = tm.time()
     
     # Print out the program's banner
-    print("Running FlowLISA by Ran Tao, built on clusterpy by Duque et al.")
+    print "Running FlowLISA by Ran Tao, built on clusterpy by Duque et al."
 
     # Initializing main data structures from input arguments
     areas1 = AREAS1 
@@ -51,7 +51,7 @@ def execFLOWLISA(AREAS1, AREAS2, FlowValue, Spatstat, NeiLvl):
     # Calculating weights (Wflow) which represent the flow between areas
     neighborLevel = NeiLvl
     Wflow = weightsFromFlows(areas1, areas2, y, neighborLevel)
-    print(f"Finished calculating Wflow. Length: {len(Wflow)}")
+    print 'Finished calculating Wflow.'
 
     # Compute global statistics that will be used for the local calculations
     dataSum = np.sum(list(y.values()))
@@ -104,7 +104,7 @@ def execFLOWLISA(AREAS1, AREAS2, FlowValue, Spatstat, NeiLvl):
 
     # Analyze the results of the Monte-Carlo simulation
     GMoranI_sim.sort()
-    GMoranI_str = f"Global Moran's I value is: {GMoranI}. It is {'positive' if GMoranI >= 0 else 'negative'}, but "
+    GMoranI_str = "Global Moran's I value is: {}. It is {}, but insignificant at 0.01 level".format(GMoranI, 'positive' if GMoranI >= 0 else 'negative')
     GMoranI_str += "insignificant at 0.01 level"
     if GMoranI >= 0 and GMoranI >= GMoranI_sim[950] or GMoranI <= 0 and GMoranI <= GMoranI_sim[49]:
         GMoranI_str = GMoranI_str.replace("insignificant", "significantly")
