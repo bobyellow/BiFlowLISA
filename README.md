@@ -1,8 +1,8 @@
 # BiFlowLISA
 **BiFlowLISA** (Tao and Thill, 2020) measures the bivariate spatial association of flow data. 
 
-Run the codes of FlowLISA:
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bobyellow/FlowLISA/blob/main/FlowLISA_main.ipynb)
+Run the codes of BiFlowLISA:
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bobyellow/BiFlowLISA/blob/main/BiFlowLISA_main.ipynb)
 
 As detailed in Equation (3) (Tao et al. 2023), $FI_{i,j}$ is the local Moran’s I statistic, or the spatial autocorrelation measure of flow between origin $i$ and destination $j$. $f_{i,j}$ represents the value (or volume) of flow between regions $i$ and $j$. $n$ is the total number of flows in the study area. $\bar{f}$ is the average value of all flows. $w_{ij,uv}$ is the spatial flow weight between $f_{i,j}$ and $f_{u,v}$.
 
@@ -25,22 +25,3 @@ The figure below shows the results of FlowLISA at the 5% significance level, usi
 To cite:
 
 Tao, R., & Thill, J. C. (2020). BiFlowLISA: Measuring spatial association for bivariate flow data. Computers, Environment and Urban Systems, 83, 101519.
-
-Tao, R., Chen, Y., & Thill, J. C. (2023). A space-time flow LISA approach for panel flow data. Computers, Environment and Urban Systems, 106, 102042.
-
-Tao, R., & Thill, J. C. (2016). Spatial cluster detection in spatial flow data. Geographical Analysis, 48(4), 355-372.
-
-
-Second, this is the execute code for FlowLISA
-execBIFLOWLISA(AREAS1, AREAS2, FlowValue, NeiLvl)
-    Parameters:
-    - AREAS1: List of Origin areas.
-    - AREAS2: List of Destination areas.
-    - FlowValue: OD pairs with non-zero value.
-    - NeiLvl: Neighbor Level for weights computation. level 1 has O (D) the same, while D (O) is neighbor; level 2 has both O and D as neighbor; level 12 = level 1 + level 2
-
-Third, we adopt Monte Carlo simulation based on conditional permutations to evaluate the statistical significance. The default number is 1000.
-
-Finally, after execute the code, export the results to the path you want to save.
-outputFile = open('yourpath/file_name.txt','w')
-outputFile.write(outputStr)
