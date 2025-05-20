@@ -4,22 +4,28 @@
 Run the codes of BiFlowLISA:
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bobyellow/BiFlowLISA/blob/main/BiFlowLISA_main.ipynb)
 
-As detailed in Equation (3) (Tao et al. 2023), $FI_{i,j}$ is the local Moran’s I statistic, or the spatial autocorrelation measure of flow between origin $i$ and destination $j$. $f_{i,j}$ represents the value (or volume) of flow between regions $i$ and $j$. $n$ is the total number of flows in the study area. $\bar{f}$ is the average value of all flows. $w_{ij,uv}$ is the spatial flow weight between $f_{i,j}$ and $f_{u,v}$.
+![image](https://github.com/user-attachments/assets/39e615e6-aa1c-4341-b5c3-f59b0553733a)
 
-Equation (3):
+![image](https://github.com/user-attachments/assets/376412bd-b7b9-471f-a6e8-0af5acd6633b)
 
-![image](https://github.com/user-attachments/assets/c94ee5f0-263e-4ddb-b2d0-d2d0b2334dc8)
-
-The spatial weight between flows can be defined via contiguity of origin and destination, and the k nearest neighbors based on flow distance (Tao and Thill 2016). In FlowLISA codes, a creative way of calculating spatial weight is called "a move-based flow distance (MBFD)". For any two given flows, the distance can be defined as the total number of “moves” across grid cells that the origin and destination of one flow need to take to overlap with the other. The figure below shows flows having different MBFD from flow a. 
+The spatial weight between flows can be defined via contiguity of origin and destination, or the k nearest neighbors based on flow distance, or "a move-based flow distance (MBFD)" (see the FlowLISA repository).
 
 ![FlowMBFD](https://github.com/user-attachments/assets/5a43de00-7ba0-490a-b05f-b82cc96bd2d4)
 
 
-The result interpretation is similar to other LISA methods. There are four categories of significant local patterns, namely ‘HH’ (high-high), ‘LL’ (low-low), ‘HL’ (high-low), and ‘LH’ (low-high). The ‘HH’ and ‘LL’ local patterns are the two types of flow clusters of strong spatial autocorrelation, i.e., flows in spatial proximity share similar values. An ‘HH’ pattern means the flow in focus has a high value while its neighboring flows exhibit a dominance of high values as well, compared with the global average. In contrast, an ‘LL’ pattern is its counterpart in the case of low values. Conversely, the ‘HL’ and ‘LH’ local patterns are the two types of outliers indicating dissimilar flow values locally. An ‘HL’ pattern means the flow in focus has a high value while its neighboring flows on average have low values compared with the global average. 
+The synthetic flow dataset was created between two lattices representing the origin and destination regions. Each lattice has 37 identical hexagonal grid cells as the basic spatial units. For any given OD pair (i,j), there is a type-I flow as well as a type-II flow. In total, there are 1,369 flows of each type.
 
-The figure below shows the results of FlowLISA at the 5% significance level, using the American Community Survey (ACS) state-to-state migration flows sourced from the U.S. Census Bureau website:
+![image](https://github.com/user-attachments/assets/20875587-1243-4cda-bed5-1e9ef7cd6927)
 
-![SFlowLISA_06_17_005](https://github.com/user-attachments/assets/e0cbc289-8bf3-449a-a166-adfa93644bca)
+
+For the case study, we set our study area as the southern half of Manhattan that is south of East 96th and West 110th Streets. This region is ruled by the city administration as the “yellow taxi exclusive zone”, where only yellow taxis (as opposed to the green taxis) are allowed to pick up passengers. Therefore, we simplify this case study by focusing on the yellow taxis versus ride-hailing services, excluding the internal competition of taxi companies. 
+
+The results of Local ‘HL’ and ‘LH’ patterns of taxi vs ride hailing AND ride hailing vs taxi:
+
+![image](https://github.com/user-attachments/assets/5519c623-0475-4af4-8961-8ac197bb1071) ![image](https://github.com/user-attachments/assets/9fb10617-aa35-4f16-b651-4d8d1f6fc902)
+
+The result interpretation is similar to other LISA methods. There are four categories of significant local patterns, namely ‘HH’ (high-high), ‘LL’ (low-low), ‘HL’ (high-low), and ‘LH’ (low-high). For the bivariate statistics, the results are also translated as acronyms but with slightly different interpretations. For instance, 'HH’ means the value of variable x is high at a given flow while the values of variable y in the flow neighborhood are high as well. In other words, a high-value type-I flow is surrounded by high-value type-II flows. 
+
 
 
 To cite:
